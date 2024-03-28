@@ -33,6 +33,4 @@ export default App;
          1. alpha
             1. BIG EY
 2. two
-3. asdf
-4. asdf
-5. asdf
+3. three
