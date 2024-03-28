@@ -1,5 +1,6 @@
 import {
   BoldItalicUnderlineToggles,
+  InsertThematicBreak,
   MDXEditor,
   UndoRedo,
   headingsPlugin,
@@ -7,6 +8,7 @@ import {
   listsPlugin,
   markdownShortcutPlugin,
   quotePlugin,
+  thematicBreakPlugin,
   toolbarPlugin,
 } from '@mdxeditor/editor'
 import '@mdxeditor/editor/style.css'
@@ -16,8 +18,13 @@ export const Editor = () => {
   return (
     <MDXEditor
       className="mx-auto max-w-screen-lg rounded-lg border-2 border-gray-800"
-      markdown={'asdf'}
+      markdown={`asdf
+
+      ---
+      
+      asdf`}
       plugins={[
+        thematicBreakPlugin(),
         headingsPlugin(),
         listsPlugin(),
         linkPlugin(),
@@ -28,6 +35,7 @@ export const Editor = () => {
             <>
               <UndoRedo />
               <BoldItalicUnderlineToggles />
+              <InsertThematicBreak />
             </>
           ),
         }),
