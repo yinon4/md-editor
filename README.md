@@ -1,4 +1,4 @@
-# yinon-docs&#x20;
+# yinon-docs
 
 ***
 
