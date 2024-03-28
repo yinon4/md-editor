@@ -1,8 +1,9 @@
-import './App.css'
-import { Editor } from './Editor'
+import { Editor } from './Editor/Editor'
 
-function App() {
-  return <Editor />
+export const App = () => {
+  return (
+    <div className="my-8">
+      <Editor />
+    </div>
+  )
 }
-
-export default App
