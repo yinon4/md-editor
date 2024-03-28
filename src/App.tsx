@@ -14,7 +14,7 @@ export const App = () => {
     }
   }
 
-  const checkKey = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
       e.preventDefault()
       save()
@@ -22,7 +22,7 @@ export const App = () => {
   }
 
   return (
-    <div className="my-8" onKeyDown={checkKey}>
+    <div className="my-8" onKeyDown={handleKeyDown}>
       <Editor markdown={markdown} editorRef={editorRef} />
     </div>
   )
