@@ -4,7 +4,7 @@ const octokit = new Octokit({
   auth: import.meta.env.VITE_GITHUB_TOKEN,
 })
 
-const getFile = async () =>
+const getFile = () =>
   octokit.request('GET /repos/yinon4/yinon-doc/readme', {
     owner: 'yinon4',
     repo: 'yinon-doc',
