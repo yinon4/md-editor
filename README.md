@@ -1,6 +1,6 @@
 # yinon-docs
 
-afds
+afd
 
 ***
 
