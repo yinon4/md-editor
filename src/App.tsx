@@ -1,15 +1,15 @@
 import { MDXEditorMethods } from '@mdxeditor/editor'
 import { useRef, useState } from 'react'
 import { Editor } from './Editor/Editor'
+import { githubMarkdown, writeFile } from './Github/gihub'
 
 export const App = () => {
-  const [markdown, setMarkdown] = useState('')
+  const [markdown, setMarkdown] = useState(githubMarkdown)
   const editorRef = useRef<MDXEditorMethods>(null)
-
-  console.log(markdown)
 
   const save = () => {
     if (editorRef.current) {
+      writeFile(editorRef.current.getMarkdown())
       setMarkdown(editorRef.current.getMarkdown())
     }
   }
