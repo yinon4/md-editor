@@ -7,6 +7,7 @@ import {
   InsertCodeBlock,
   InsertImage,
   InsertSandpack,
+  InsertTable,
   InsertThematicBreak,
   MDXEditor,
   MDXEditorMethods,
@@ -23,6 +24,7 @@ import {
   markdownShortcutPlugin,
   quotePlugin,
   sandpackPlugin,
+  tablePlugin,
   thematicBreakPlugin,
   toolbarPlugin,
 } from '@mdxeditor/editor'
@@ -40,7 +42,7 @@ export const Editor = (props: {
       ref={props.editorRef}
       className="mx-auto max-w-screen-lg rounded-lg border-2 border-gray-800"
       markdown={props.markdown}
-      plugins={plugins}
+      plugins={plugins(props.markdown)}
     />
   )
 }
@@ -65,6 +67,7 @@ const Toolbar = () => (
               <InsertThematicBreak />
               <InsertImage />
               <CreateLink />
+              <InsertTable />
               <InsertCodeBlock />
               <InsertSandpack />
             </>
@@ -75,19 +78,20 @@ const Toolbar = () => (
   </DiffSourceToggleWrapper>
 )
 
-const plugins = [
+const plugins = (markdown: string) => [
   imagePlugin(),
   thematicBreakPlugin(),
   headingsPlugin(),
   listsPlugin(),
   linkPlugin(),
   linkDialogPlugin(),
+  tablePlugin(),
   quotePlugin(),
   markdownShortcutPlugin(),
   codeBlockPlugin({ defaultCodeBlockLanguage: 'ts' }),
   sandpackPlugin({ sandpackConfig: simpleSandpackConfig }),
   codeMirrorPlugin({ codeBlockLanguages: { ts: 'TypeScript', css: 'CSS' } }),
-  diffSourcePlugin({ viewMode: 'rich-text', diffMarkdown: 'boo' }),
+  diffSourcePlugin({ viewMode: 'rich-text', diffMarkdown: markdown }),
   toolbarPlugin({
     toolbarContents: Toolbar,
   }),
