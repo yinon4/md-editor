@@ -59,6 +59,12 @@ li[role='checkbox']::before {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+li[role='checkbox']::after {
+  text-decoration: none !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
 
 li[role='checkbox'][aria-checked='false']::before {
   content: '☐' !important;

@@ -1,8 +1,10 @@
 import {
   BoldItalicUnderlineToggles,
+  DiffSourceToggleWrapper,
   InsertThematicBreak,
   MDXEditor,
   UndoRedo,
+  diffSourcePlugin,
   headingsPlugin,
   linkPlugin,
   listsPlugin,
@@ -23,23 +25,28 @@ export const Editor = () => {
       ---
       
       asdf`}
-      plugins={[
-        thematicBreakPlugin(),
-        headingsPlugin(),
-        listsPlugin(),
-        linkPlugin(),
-        quotePlugin(),
-        markdownShortcutPlugin(),
-        toolbarPlugin({
-          toolbarContents: () => (
-            <>
-              <UndoRedo />
-              <BoldItalicUnderlineToggles />
-              <InsertThematicBreak />
-            </>
-          ),
-        }),
-      ]}
+      plugins={plugins}
     />
   )
 }
+
+const Toolbar = () => (
+  <DiffSourceToggleWrapper>
+    <UndoRedo />
+    <BoldItalicUnderlineToggles />
+    <InsertThematicBreak />
+  </DiffSourceToggleWrapper>
+)
+
+const plugins = [
+  thematicBreakPlugin(),
+  headingsPlugin(),
+  listsPlugin(),
+  linkPlugin(),
+  quotePlugin(),
+  markdownShortcutPlugin(),
+  diffSourcePlugin({ viewMode: 'rich-text', diffMarkdown: 'boo' }),
+  toolbarPlugin({
+    toolbarContents: Toolbar,
+  }),
+]
