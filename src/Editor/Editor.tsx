@@ -9,6 +9,7 @@ import {
   InsertSandpack,
   InsertThematicBreak,
   MDXEditor,
+  MDXEditorMethods,
   ShowSandpackInfo,
   UndoRedo,
   codeBlockPlugin,
@@ -26,18 +27,19 @@ import {
   toolbarPlugin,
 } from '@mdxeditor/editor'
 import '@mdxeditor/editor/style.css'
+import { RefObject } from 'react'
 import './Editor.css'
 import { simpleSandpackConfig } from './configs'
 
-export const Editor = () => {
+export const Editor = (props: {
+  markdown: string
+  editorRef: RefObject<MDXEditorMethods>
+}) => {
   return (
     <MDXEditor
+      ref={props.editorRef}
       className="mx-auto max-w-screen-lg rounded-lg border-2 border-gray-800"
-      markdown={`asdf
-
-      ---
-      
-      asdf`}
+      markdown={props.markdown}
       plugins={plugins}
     />
   )

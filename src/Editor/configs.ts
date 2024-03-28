@@ -15,8 +15,9 @@ const App = () => {
 export default App;
 `
 
-const defaultCssContent = `* {background-color: black;
-color: lightgray;
+const defaultCssContent = `* {
+    background-color: #151515;
+    color: #ffffff;
 }`
 
 export const simpleSandpackConfig: SandpackConfig = {
