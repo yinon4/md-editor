@@ -103,7 +103,7 @@ a {
     color: #0366d6 !important;
   }
   &:visited {
-    color: purple !important;
+    color: palevioletred !important;
   }
   &:hover {
     text-decoration: underline !important;
