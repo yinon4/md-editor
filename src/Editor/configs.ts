@@ -1,7 +1,6 @@
-import { SandpackConfig } from '@mdxeditor/editor'
+import { SandpackConfig } from "@mdxeditor/editor";
 
-const defaultSnippetContent = 
-`import './App.css'
+const defaultSnippetContent = `import './App.css'
 
 const App = () => {
   return (
@@ -12,28 +11,28 @@ const App = () => {
   );
 }
 
-export default App;`
+export default App;`;
 
 const defaultCssContent = `* {
     background-color: #151515;
     color: #ffffff;
-}`
+}`;
 
 export const simpleSandpackConfig: SandpackConfig = {
-  defaultPreset: 'react-ts',
+  defaultPreset: "react-ts",
   presets: [
     {
-      label: 'React',
-      name: 'react-ts',
-      meta: 'live react',
-      sandpackTemplate: 'react-ts',
-      sandpackTheme: 'dark',
-      snippetFileName: '/App.tsx',
+      label: "React",
+      name: "react-ts",
+      meta: "live react",
+      sandpackTemplate: "react-ts",
+      sandpackTheme: "dark",
+      snippetFileName: "/App.tsx",
       files: {
-        '/App.css': defaultCssContent,
+        "/App.css": defaultCssContent,
       },
-      snippetLanguage: 'tsx',
+      snippetLanguage: "tsx",
       initialSnippetContent: defaultSnippetContent,
     },
   ],
-}
+};
