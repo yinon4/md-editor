@@ -1,49 +1,59 @@
 import {
-  BoldItalicUnderlineToggles,
-  ChangeCodeMirrorLanguage,
-  ConditionalContents,
-  CreateLink,
-  DiffSourceToggleWrapper,
-  InsertCodeBlock,
-  InsertImage,
-  InsertSandpack,
-  InsertTable,
-  InsertThematicBreak,
-  MDXEditor,
-  MDXEditorMethods,
-  ShowSandpackInfo,
-  UndoRedo,
-  codeBlockPlugin,
-  codeMirrorPlugin,
-  diffSourcePlugin,
-  headingsPlugin,
-  imagePlugin,
-  linkDialogPlugin,
-  linkPlugin,
-  listsPlugin,
-  markdownShortcutPlugin,
-  quotePlugin,
-  sandpackPlugin,
-  tablePlugin,
-  thematicBreakPlugin,
-  toolbarPlugin,
+    BoldItalicUnderlineToggles,
+    ChangeCodeMirrorLanguage,
+    ConditionalContents,
+    CreateLink,
+    DiffSourceToggleWrapper,
+    InsertCodeBlock,
+    InsertImage,
+    InsertSandpack,
+    InsertTable,
+    InsertThematicBreak,
+    MDXEditor,
+    MDXEditorMethods,
+    ShowSandpackInfo,
+    UndoRedo,
+    codeBlockPlugin,
+    codeMirrorPlugin,
+    diffSourcePlugin,
+    headingsPlugin,
+    imagePlugin,
+    linkDialogPlugin,
+    linkPlugin,
+    listsPlugin,
+    markdownShortcutPlugin,
+    quotePlugin,
+    sandpackPlugin,
+    tablePlugin,
+    thematicBreakPlugin,
+    toolbarPlugin,
 } from '@mdxeditor/editor'
 import '@mdxeditor/editor/style.css'
-import { RefObject } from 'react'
+import { useRef } from 'react'
 import './Editor.css'
 import { simpleSandpackConfig } from './configs'
 
-export const Editor = (props: {
-  markdown: string
-  editorRef: RefObject<MDXEditorMethods>
-}) => {
+export const Editor = (props: { markdown: string }) => {
+  const ref = useRef<MDXEditorMethods>(null)
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault()
+      if (ref.current) {
+        localStorage.setItem('markdown', ref.current.getMarkdown())
+      }
+    }
+  }
+
   return (
-    <MDXEditor
-      ref={props.editorRef}
-      className="mx-auto max-w-screen-lg rounded-lg border-2 border-gray-800"
-      markdown={props.markdown}
-      plugins={plugins(props.markdown)}
-    />
+    <div onKeyDown={handleKeyDown}>
+      <MDXEditor
+        ref={ref}
+        className="border-2 border-gray-800 mx-auto rounded-lg max-w-screen-lg"
+        markdown={props.markdown}
+        plugins={plugins(props.markdown)}
+      />
+    </div>
   )
 }
 

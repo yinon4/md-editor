@@ -1,7 +1,7 @@
 import { SandpackConfig } from '@mdxeditor/editor'
 
-const defaultSnippetContent = `
-import './App.css'
+const defaultSnippetContent = 
+`import './App.css'
 
 const App = () => {
   return (
@@ -12,8 +12,7 @@ const App = () => {
   );
 }
 
-export default App;
-`
+export default App;`
 
 const defaultCssContent = `* {
     background-color: #151515;

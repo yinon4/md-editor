@@ -1,29 +1,12 @@
-import { MDXEditorMethods } from '@mdxeditor/editor'
-import { useRef, useState } from 'react'
 import { Editor } from './Editor/Editor'
-import { githubMarkdown, writeFile } from './Github/gihub'
 
 export const App = () => {
-  const [markdown, setMarkdown] = useState(githubMarkdown)
-  const editorRef = useRef<MDXEditorMethods>(null)
+  // const { data: file, isLoading, error } = useFile()
 
-  const save = () => {
-    if (editorRef.current) {
-      writeFile(editorRef.current.getMarkdown())
-      setMarkdown(editorRef.current.getMarkdown())
-    }
-  }
+  // if (isLoading) return <div className="my-8">Loading...</div>
+  // if (error) return <div className="my-8">{error?.message}</div>
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-      e.preventDefault()
-      save()
-    }
-  }
-
-  return (
-    <div className="my-8" onKeyDown={handleKeyDown}>
-      <Editor markdown={markdown} editorRef={editorRef} />
+  return <div className="my-8">
+    <Editor markdown={localStorage.getItem('markdown') || 'type something'} />
     </div>
-  )
 }
